@@ -88,10 +88,10 @@ const criaCard = (card) =>{
 
 const atualizaTotais = () =>{
     totalDeDicas.innerHTML = lStorage.length;
-    totalDicasFront.innerHTML = lStorage.filter((item)=> item.categoria === "1").length;
-    totalDicasBack.innerHTML = lStorage.filter((item)=> item.categoria === "2").length;
-    totalDicasFull.innerHTML = lStorage.filter((item)=> item.categoria === "3").length;
-    totalDicasSoft.innerHTML = lStorage.filter((item)=> item.categoria === "4").length;
+    totalDicasFront.innerHTML = lStorage.filter((item)=> item.categoria === "FrontEnd").length;
+    totalDicasBack.innerHTML = lStorage.filter((item)=> item.categoria === "BackEnd").length;
+    totalDicasFull.innerHTML = lStorage.filter((item)=> item.categoria === "FullStack").length;
+    totalDicasSoft.innerHTML = lStorage.filter((item)=> item.categoria === "Comportamental/Soft").length;
 }
 
 
