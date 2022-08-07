@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEVinKnowledge</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
+<body>
+    <aside >
+        <header>
+            <h1>DEVinKnowledge</h1>
+        </header>
+        <form id="formDica" class="formularioCadastro">
+            <label>Título</label>
+            <input type="text" id="indiceEdicao">
+            <input type="text" id="titulo" placeholder="Digite um título" minlength="8" maxlength="64" required>
+            <label>Linguagem/Skill</label>
+            <input type="text" id="linguagemSkill" placeholder="Digite uma linguagem ou skill" minlength="4" maxlength="16" required>
+            <label>Categoria</label>
+            <select id="categoria" required>
+                <option value="1">FrontEnd</option>
+                <option value="2">BackEnd</option>
+                <option value="3">FullStack</option>
+                <option value="4">Comportamental/Soft</option>
+            </select>
+            <label>Descrição</label>
+            <textarea placeholder="Escreva aqui o detalhamento da sua dica" id="descricao" required minlength="32" maxlength="512"></textarea>
+            <label>Vídeo do YouTube*</label>
+            <input type="url" id="urlYouTube" placeholder="https://suaurl.com">
+            <div class="botaoFormulario">
+                <button id="limpaForm">Limpar</button>
+                <button id="salvaDica">Salvar</button>
+            </div>
+        </form>
+    </aside>
+    <Main>
+        <header> 
+                <div class="headerTotais">
+                    <div class="totalizadores">
+                        <h2>Total</h2>
+                        <h2 id="totalDicas"></h2>
+                    </div>
+                    <div class="totalizadores">
+                        <h2>FrontEnd</h2>
+                        <h2 id="totalDicasFront"></h2>
+                    </div>
+                    <div class="totalizadores">
+                        <h2>BackEnd</h2>
+                        <h2 id="totalDicasBack"></h2>
+                    </div>
+                    <div class="totalizadores">
+                        <h2>FullStack</h2>
+                        <h2 id="totalDicasFull"></h2>
+                    </div>
+                    <div class="totalizadores">
+                        <h2>SoftSkill</h2>
+                        <h2 id="totalDicasSoft"></h2>
+                    </div>
+                </div>
+                <div class="pesquisaDica">
+                    <input type="text" size="100" id="campoPesquisa" placeholder="Digite um termo para pesquisa por titulo!">
+                    <button id="botaoPesquisaDica">Pesquisar</button>
+                    <button id="botaoLimpaPesquisa">Limpar</button>
+                </div>
+                
+        </header>
+        <ul class="listaDeDicas" id="listaDeCards">
+        </ul>
+
+    </Main>
+</body>
+<script type="module" src="./index.js"></script>
+</html>

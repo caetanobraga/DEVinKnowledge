@@ -1,0 +1,99 @@
+* {
+    margin:0;
+    padding: 0;
+}
+body{
+    display: flex;
+}
+aside{
+    color: aliceblue;
+    background-color: rgb(53, 53, 138);
+    width: 30%;
+    height: 100vh;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background:#F6F7F9;
+}
+
+.formularioCadastro{
+    display: flex;
+    flex-direction: column;
+}
+
+.botaoFormulario{
+    display: flex;
+}
+
+.headerTotais{
+    width: 100%;
+    display: flex;
+    gap: 30;
+    justify-content: space-around;
+}
+
+.totalizadores{
+    display: flex;
+    background: #FFFFFF;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 100px;
+    border-radius: 16px;
+    margin: 8px 16px;
+    filter: drop-shadow(2px 2px 16px rgba(0, 0, 0, 0.25));
+}
+
+.listaDeDicas{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.cardDica{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 30%;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    filter: drop-shadow(2px 2px 16px rgba(0, 0, 0, 0.25));
+    border-radius: 16px;
+    margin-left: 33px;
+    margin-top: 32px;
+
+}
+.tituloCard{
+    margin: 16px 0 0 16px;
+    text-align: center;
+}
+
+.dadosCard{
+    display: flex;
+    flex-direction: column;
+    margin: 16px 0 0 16px;
+}
+
+.paragrafoCard{
+    margin: 16px 16px 0 16px;
+    text-align: justify;
+}
+.cardButtons{
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 5px;
+}
+
+.cardButton{
+    border-radius: 64px;
+    padding: 2px;
+    margin: 0 5px 5px;
+}
+
+.cardButton img{
+    size: 50%;
+}
