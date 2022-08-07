@@ -41,6 +41,7 @@ main{
 .formularioCadastro textarea{
     height: 500px;
     border-radius: 16px;
+    padding: 5px;
 }
 
 .formularioCadastro input{
@@ -101,6 +102,16 @@ main{
     display: flex;
     gap:15px;
 }
+
+.botoespesquisa button{
+    border-radius: 16px;
+    width: 40px;
+}
+
+.botoespesquisa img{
+    width: 25px;
+}
+
 
 
 .listaDeDicas{
