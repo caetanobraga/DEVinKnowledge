@@ -88,12 +88,11 @@ const criaCard = (card) =>{
 
 const atualizaTotais = () =>{
     totalDeDicas.innerHTML = lStorage.length;
-    totalDicasFront.innerHTML = lStorage.filter((item)=> item.categoria === "1").length;
-    totalDicasBack.innerHTML = lStorage.filter((item)=> item.categoria === "2").length;
-    totalDicasFull.innerHTML = lStorage.filter((item)=> item.categoria === "3").length;
-    totalDicasSoft.innerHTML = lStorage.filter((item)=> item.categoria === "4").length;
+    totalDicasFront.innerHTML = lStorage.filter((item)=> item.categoria === "FrontEnd").length;
+    totalDicasBack.innerHTML = lStorage.filter((item)=> item.categoria === "BackEnd").length;
+    totalDicasFull.innerHTML = lStorage.filter((item)=> item.categoria === "FullStack").length;
+    totalDicasSoft.innerHTML = lStorage.filter((item)=> item.categoria === "Comportamental/Soft").length;
 }
-
 
 let lStorage = JSON.parse(localStorage.getItem("listaDeDicas"))
 if (!lStorage)
@@ -106,68 +105,54 @@ atualizaTotais();
 formDica.addEventListener("submit", (event) => {
     event.preventDefault();
     if (indiceEdicao.value){
-        if (event.target.titulo.value.length < 8 || event.target.titulo.value.length >64){
-            tituloInvalido.innerHTML = "Título deve ter entre 8 e 64 caracteres"
-            return
-        }
-        if (event.target.linguagemSkill.value.length < 4 || event.target.linguagemSkill.value.length > 16){
-            linguagemInvalida.innerHTML = "Skill deve ter entre 4 e 16 caracteres"
-            return
-        }
-        if (event.target.categoria.value == "0"){
-            categoriaInvalida.innerHTML = "Selecione uma categoria!"
-            return
-        }
-        if (event.target.descricao.value.length < 32 || event.target.descricao.value.length > 512){
-            descricaoInvalida.innerHTML = "Descrição deve ter entre 32 e 512 caracteres"
-            return
-        }
-        if (urlYouTube.value.length > 0){
-            if (!isYoutubeVideo(urlYouTube.value)){
-                urlInvalida.innerHTML = "Endereço de vídeo inválido!"
-                return
-            }
-        }
-        const card = new Dica(titulo.value, linguagemSkill.value, categoria.value, descricao.value, urlYouTube.value);
-        lStorage.splice(indiceEdicao.value,1,card)
-        localStorage.setItem("listaDeDicas",JSON.stringify(lStorage));
-        listaDeCards.innerHTML="";
-        lStorage.forEach(card => {
-            criaCard (card);
-        });
-        atualizaTotais();
-        alert("Dica alterada com sucesso!");
-        return;
+        let validacao = validaForm(event)
+        console.log(validacao);
+        if (validacao===true){
+            const card = new Dica(titulo.value, linguagemSkill.value, categoria.value, descricao.value, urlYouTube.value);
+            lStorage.splice(indiceEdicao.value,1,card)
+            localStorage.setItem("listaDeDicas",JSON.stringify(lStorage));
+            listaDeCards.innerHTML="";
+            lStorage.forEach(card => {
+                criaCard (card);
+            });
+            atualizaTotais();
+            alert("Dica alterada com sucesso!");
+            return;
+        };
     };
+    if (validaForm(event)===true){
+        const card = new Dica(titulo.value, linguagemSkill.value, categoria.value, descricao.value, urlYouTube.value);
+        lStorage.push(card);
+        criaCard(card);
+        localStorage.setItem("listaDeDicas",JSON.stringify(lStorage));
+        atualizaTotais();
+        alert("Dica cadastrada com sucesso!");
+        return;
+    }
+});
+
+function validaForm(event){
     if (event.target.titulo.value.length < 8 || event.target.titulo.value.length >64){
-        tituloInvalido.innerHTML = "Título deve ter entre 8 e 64 caracteres"
-        return
+            return (tituloInvalido.innerHTML = 'Título deve ter entre 8 e 64 caracteres');
     }
     if (event.target.linguagemSkill.value.length < 4 || event.target.linguagemSkill.value.length > 16){
-        linguagemInvalida.innerHTML = "Skill deve ter entre 4 e 16 caracteres"
-        return
+        return (linguagemInvalida.innerHTML = 'Skill deve ter entre 4 e 16 caracteres',tituloInvalido.innerHTML = '');
     }
     if (event.target.categoria.value == "0"){
-        categoriaInvalida.innerHTML = "Selecione uma categoria!"
-        return
+        return (categoriaInvalida.innerHTML = 'Selecione uma categoria!',linguagemInvalida.innerHTML = '',tituloInvalido.innerHTML = '');
+        
     }
     if (event.target.descricao.value.length < 32 || event.target.descricao.value.length > 512){
-        descricaoInvalida.innerHTML = "Descrição deve ter entre 32 e 512 caracteres"
-        return
+        return (descricaoInvalida.innerHTML = 'Descrição deve ter entre 32 e 512 caracteres',categoriaInvalida.innerHTML = '',linguagemInvalida.innerHTML = '',tituloInvalido.innerHTML = '');
+        
     }
     if (urlYouTube.value.length > 0){
         if (!isYoutubeVideo(urlYouTube.value)){
-            urlInvalida.innerHTML = "Endereço de vídeo inválido!"
-            return
+            return (urlInvalida.innerHTML = 'Endereço de vídeo inválido!',descricaoInvalida.innerHTML = '',categoriaInvalida.innerHTML = '',linguagemInvalida.innerHTML = '',tituloInvalido.innerHTML = '');
         }
     }
-    const card = new Dica(titulo.value, linguagemSkill.value, categoria.value, descricao.value, urlYouTube.value);
-    lStorage.push(card);
-    criaCard(card);
-    localStorage.setItem("listaDeDicas",JSON.stringify(lStorage));
-    atualizaTotais();
-    alert("Dica cadastrada com sucesso!");
-});
+    return true;
+}
 
 botaoPesquisaDica.addEventListener("click", (event) => {
     event.preventDefault()
@@ -181,7 +166,7 @@ botaoLimpaForm.addEventListener("click", (event) => {
 
 function isYoutubeVideo(url) {
     var v = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
-    return (url.match(v)) ? RegExp.$1 : false;
+    return (url.match(v)) ? RegExp : false;
 }
 
 function deleta(id){
