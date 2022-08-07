@@ -1,15 +1,19 @@
 * {
     margin:0;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
 body{
     display: flex;
 }
+
 aside{
     color: aliceblue;
     background-color: rgb(53, 53, 138);
     width: 30%;
     height: 100vh;
+    padding: 0 10px 0 10px;
 }
 
 main{
@@ -19,13 +23,47 @@ main{
     background:#F6F7F9;
 }
 
+.headerFormulario{
+    display: flex;
+    margin: 20px 0 20px 0;
+}
+
+.headerFormulario img{
+    height: 25px;
+}
+
 .formularioCadastro{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.formularioCadastro textarea{
+    height: 500px;
+    border-radius: 16px;
+}
+
+.formularioCadastro input{
+    border-radius: 16px;
+}
+
+.formularioCadastro select{
+    border-radius: 16px;
+}
+
+.campoFormulario{
     display: flex;
     flex-direction: column;
 }
 
 .botaoFormulario{
     display: flex;
+    justify-content: space-around;
+}
+
+.botaoFormulario button{
+    width: 50%;
+    height: 25px;
 }
 
 .headerTotais{
@@ -47,6 +85,23 @@ main{
     margin: 8px 16px;
     filter: drop-shadow(2px 2px 16px rgba(0, 0, 0, 0.25));
 }
+
+.pesquisaDica{
+    display: flex;
+    margin: 16px 32px;
+    gap:20px;
+    
+}
+
+.pesquisaDica input{
+    border-radius: 16px;
+}
+
+.botoespesquisa{
+    display: flex;
+    gap:15px;
+}
+
 
 .listaDeDicas{
     display: flex;
@@ -96,4 +151,8 @@ main{
 
 .cardButton img{
     size: 50%;
+}
+
+.campoInvalido{
+    color: red;
 }

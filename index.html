@@ -4,34 +4,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/book.svg">
     <title>DEVinKnowledge</title>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 <body>
     <aside >
-        <header>
+        <header class="headerFormulario">
+            <img src="images/book.svg">
             <h1>DEVinKnowledge</h1>
         </header>
         <form id="formDica" class="formularioCadastro">
-            <label>Título</label>
-            <input type="text" id="indiceEdicao">
-            <input type="text" id="titulo" placeholder="Digite um título" minlength="8" maxlength="64" required>
-            <label>Linguagem/Skill</label>
-            <input type="text" id="linguagemSkill" placeholder="Digite uma linguagem ou skill" minlength="4" maxlength="16" required>
-            <label>Categoria</label>
-            <select id="categoria" required>
-                <option value="1">FrontEnd</option>
-                <option value="2">BackEnd</option>
-                <option value="3">FullStack</option>
-                <option value="4">Comportamental/Soft</option>
-            </select>
-            <label>Descrição</label>
-            <textarea placeholder="Escreva aqui o detalhamento da sua dica" id="descricao" required minlength="32" maxlength="512"></textarea>
-            <label>Vídeo do YouTube*</label>
-            <input type="url" id="urlYouTube" placeholder="https://suaurl.com">
+            <div class="campoFormulario">
+                <input type="text" id="indiceEdicao" hidden>
+                <label>Título</label>
+                <input type="text" id="titulo" placeholder="Digite um título">
+                    <span class="campoInvalido" id="tituloInvalido"></span>
+            </div>
+
+            <div class="campoFormulario">
+                <label>Linguagem/Skill</label>
+                <input type="text" id="linguagemSkill" placeholder="Digite uma linguagem ou skill">
+                    <span class="campoInvalido" id="linguagemInvalida"></span>
+            </div>
+
+            <div class="campoFormulario">
+                <label>Categoria</label>
+                <select id="categoria">
+                    <option value="0">Selecione a categoria</option>
+                    <option value="FrontEnd">FrontEnd</option>
+                    <option value="BackEnd">BackEnd</option>
+                    <option value="FullStack">FullStack</option>
+                    <option value="Comportamental/Soft">Comportamental/Soft</option>
+                </select>
+                    <span class="campoInvalido" id="categoriaInvalida"></span>
+            </div>
+
+            <div class="campoFormulario">
+                <label>Descrição</label>
+                <textarea placeholder="Escreva aqui o detalhamento da sua dica" id="descricao"></textarea>
+                <span class="campoInvalido" id="descricaoInvalida"></span>
+            </div>
+
+            <div class="campoFormulario">
+                <label>Vídeo do YouTube*</label>
+                <input type="text" id="urlYouTube" placeholder="https://www.youtube.com/">
+                    <span class="campoInvalido" id="urlInvalida"></span>
+            </div>
+
             <div class="botaoFormulario">
                 <button id="limpaForm">Limpar</button>
-                <button id="salvaDica">Salvar</button>
+                <button id="salvaDica" type="submit">Salvar</button>
             </div>
         </form>
     </aside>
@@ -61,10 +84,12 @@
                 </div>
                 <div class="pesquisaDica">
                     <input type="text" size="100" id="campoPesquisa" placeholder="Digite um termo para pesquisa por titulo!">
-                    <button id="botaoPesquisaDica">Pesquisar</button>
-                    <button id="botaoLimpaPesquisa">Limpar</button>
+                    <div class="botoespesquisa">
+                        <button id="botaoPesquisaDica">Pesquisar</button>
+                        <button id="botaoLimpaPesquisa">Limpar</button>
+                    </div>
                 </div>
-                
+
         </header>
         <ul class="listaDeDicas" id="listaDeCards">
         </ul>
