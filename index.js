@@ -204,12 +204,13 @@ function pesquisaDica(string){
         alert('digite para pesquisar')
         return;
     }
+    let termo = string.toLowerCase();
     lStorage.forEach((card) =>{
-        if (card.titulo.includes(string)){
+        let titulo = card.titulo.toLowerCase();
+        if (titulo.includes(termo)){
             pesquisa.push(card);
         }
     })
-    console.log(pesquisa)
     if (pesquisa.length === 0){
         alert("Título não localizado");
         campoPesquisa.value="";
